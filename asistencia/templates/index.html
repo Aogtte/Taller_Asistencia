@@ -4,31 +4,145 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado De Asistencia</title>
+    <style>
+        :root {
+            --color-fondo: #fcfcfc;
+            --color-tarjeta: #ffffff;
+            --texto-principal: #1a1a1a;
+            --texto-secundario: #666666;
+            --color-borde: #e5e5e5;
+            --color-acento: #000000;
+            --color-peligro: #d9381e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--texto-principal);
+            max-width: 680px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.5;
+        }
+
+        .encabezado {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--color-borde);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .boton-principal {
+            background-color: var(--color-acento);
+            color: #ffffff;
+        }
+
+        .boton-principal:hover {
+            opacity: 0.85;
+        }
+
+        .tarjeta {
+            background: var(--color-tarjeta);
+            border: 1px solid var(--color-borde);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: border-color 0.2s ease;
+        }
+
+        .tarjeta:hover {
+            border-color: #cccccc;
+        }
+
+        .tarjeta h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .tarjeta p {
+            margin: 4px 0;
+            color: var(--texto-secundario);
+            font-size: 0.95rem;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 12px;
+            font-size: 0.85rem;
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--color-borde);
+        }
+
+        .acciones a {
+            color: var(--texto-secundario);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .acciones a:hover {
+            color: var(--texto-principal);
+        }
+
+        .acciones a.enlace-eliminar {
+            color: var(--color-peligro);
+        }
+
+        .acciones a.enlace-eliminar:hover {
+            opacity: 0.8;
+        }
+
+        .estado-vacio {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--texto-secundario);
+        }
+    </style>
 </head>
 <body>
     <div class="encabezado">
         <h1>Lista de Asistencia</h1>
-        <a href="/asistencia/crear/" class="btn btn-primary">Nuevo Registro</a>
+        <a href="/asistencia/crear/" class="boton boton-principal">Nuevo Registro</a>
     </div>
 
     {% for Asistencia in asistencias %}
+    
         <div class="tarjeta">
-            <h3><strong>Nombre:</strong>{{ Asistencia.nombres }}</h3>
+            <h3><strong>Nombre: </strong>{{ Asistencia.nombres }}</h3>
             <p><strong>Apellidos:</strong> {{ Asistencia.apellidos }}</p>
-            <p><strong>Tipo de Documento:</strong> ${{ Asistencia.tipo_documento }} | <strong>Número de Documento:</strong> {{ Asistencia.numero_documento }}</p>
+            <p><strong>Tipo de Documento:</strong> {{ Asistencia.tipo_documento }} | <strong>Número de Documento:</strong> {{ Asistencia.numero_documento }}</p>
             <p><strong>Whatsapp:</strong> {{ Asistencia.whatsapp }}</p>
             <p><strong>Fecha:</strong> {{ Asistencia.fecha }} | <strong>Asistió:</strong> {{ Asistencia.asistio }}</p>
 
-            <!-- <div class="actions">
-                <a href="/productos/detalle/{{ Asistencia.id }}/">Ver Detalles</a>
-                <a href="/productos/editar/{{ Asistencia.id }}/">Editar Información</a>
-                <a href="/productos/eliminar/{{ Asistencia.id }}/" class="delete">Eliminar Registro</a>
-            </div> -->
+            <div class="acciones">
+                <a href="/asistencia/editar/{{ Asistencia.id }}/">Editar Información</a>
+                <a href="/asistencia/eliminar/{{ Asistencia.id }}/" class="enlace-eliminar">Eliminar Registro</a>
+            </div>
         </div>
         
     {% empty %}
     
-        <div class="vacio">
+        <div class="estado-vacio">
             <p>No hay asistencias registradas.</p>
         </div>
         
