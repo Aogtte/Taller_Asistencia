@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado De Asistencia</title>
+</head>
+<body>
+    <div class="encabezado">
+        <h1>Lista de Asistencia</h1>
+        <a href="/asistencia/crear/" class="btn btn-primary">Nuevo Registro</a>
+    </div>
+
+    {% for Asistencia in asistencias %}
+        <div class="tarjeta">
+            <h3><strong>Nombre:</strong>{{ Asistencia.nombres }}</h3>
+            <p><strong>Apellidos:</strong> {{ Asistencia.apellidos }}</p>
+            <p><strong>Tipo de Documento:</strong> ${{ Asistencia.tipo_documento }} | <strong>Número de Documento:</strong> {{ Asistencia.numero_documento }}</p>
+            <p><strong>Whatsapp:</strong> {{ Asistencia.whatsapp }}</p>
+            <p><strong>Fecha:</strong> {{ Asistencia.fecha }} | <strong>Asistió:</strong> {{ Asistencia.asistio }}</p>
+
+            <!-- <div class="actions">
+                <a href="/productos/detalle/{{ Asistencia.id }}/">Ver Detalles</a>
+                <a href="/productos/editar/{{ Asistencia.id }}/">Editar Información</a>
+                <a href="/productos/eliminar/{{ Asistencia.id }}/" class="delete">Eliminar Registro</a>
+            </div> -->
+        </div>
+        
+    {% empty %}
+    
+        <div class="vacio">
+            <p>No hay asistencias registradas.</p>
+        </div>
+        
+    {% endfor %}
+
+</body>
+</html>

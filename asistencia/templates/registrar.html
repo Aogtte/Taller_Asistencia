@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Asistencia</title>
+</head>
+<body>
+   <!--  <h1>{% if Asistencia %}Editar{% else %}Nuevo{% endif %} Producto</h1> -->
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="campo">
+            <label for="nombres">Nombres</label>
+            <input type="text" id="nombres" name="nombres" value="{{ Asistencia.nombres|default:'' }}" required>
+        </div>
+
+    </form>
+
+</body>
+</html>
