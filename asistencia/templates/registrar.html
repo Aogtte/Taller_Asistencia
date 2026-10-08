@@ -13,7 +13,32 @@
 
         <div class="campo">
             <label for="nombres">Nombres</label>
-            <input type="text" id="nombres" name="nombres" value="{{ Asistencia.nombres|default:'' }}" required>
+            <input type="text" name="nombres" value="{{ Asistencia.nombres|default:'' }}" required>
+        </div>
+
+        <div class="campo">
+            <label for="nombres">Apellidos</label>
+            <input type="text" name="nombres" value="{{ Asistencia.apellidos|default:'' }}" required>
+        </div>
+
+        <div class="campo">
+            <label for="nombres">Tipo de Documento de Identidad</label>
+            <input type="text" name="tipo_documento" value="{{ Asistencia.tipo_documento|default:'' }}" required>
+        </div>
+
+        <div class="campo">
+            <label for="nombres">Número del Documento de Identidad</label>
+            <input type="number" name="numero_documento" value="{{ Asistencia.numero_documento|default:'' }}" required>
+        </div>
+
+        <div class="campo">
+            <label for="nombres">Número de Whatsapp</label>
+            <input type="number" name="whatsapp" value="{{ Asistencia.whatsapp|default:'' }}" required>
+        </div>
+
+        <div class="campo">
+            <label for="nombres">Fecha</label>
+            <input type="number" name="whatsapp" value="{{ Asistencia.whatsapp|default:'' }}" required>
         </div>
 
     </form>
