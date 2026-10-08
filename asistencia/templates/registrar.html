@@ -18,7 +18,7 @@
 
         <div class="campo">
             <label for="nombres">Apellidos</label>
-            <input type="text" name="nombres" value="{{ Asistencia.apellidos|default:'' }}" required>
+            <input type="text" name="apellidos" value="{{ Asistencia.apellidos|default:'' }}" required>
         </div>
 
         <div class="campo">
@@ -38,8 +38,16 @@
 
         <div class="campo">
             <label for="nombres">Fecha</label>
-            <input type="number" name="whatsapp" value="{{ Asistencia.whatsapp|default:'' }}" required>
+            <input type="text" name="fecha" value="{{ Asistencia.fecha|default:'' }}" required>
         </div>
+
+        <div class="campo">
+            <label for="nombres">Asistió a Formación:</label>
+            <input type="text" name="asistio" value="{{ Asistencia.asistio|default:'' }}" required>
+        </div>
+
+        <button type="submit" class="registrar_asistencia">Registrar Asistencia</button>
+        <a href="/asistencia/" class="cancelar_registro">Cancelar Registro</a>
 
     </form>
 
